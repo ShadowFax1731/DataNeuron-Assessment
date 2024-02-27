@@ -13,7 +13,8 @@ app.use(express.json());
 app.use(cors());
 // Allow specific origin(s)
 app.use(cors({
-  origin: 'https://data-neuron-assessment.vercel.app/'
+  origin: 'https://data-neuron-assessment.vercel.app/',
+  credentials: true
 }));
 
 app.get('/', (request, response) => {

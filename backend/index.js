@@ -9,8 +9,12 @@ const app = express();
 // Middleware for parsing request body
 app.use(express.json());
 
-// Middleware for handling CORS POLICY
+// Allow all origins
 app.use(cors());
+// Allow specific origin(s)
+app.use(cors({
+  origin: 'https://data-neuron-assessment.vercel.app/'
+}));
 
 app.get('/', (request, response) => {
   console.log(request);

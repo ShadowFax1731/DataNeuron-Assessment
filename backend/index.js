@@ -6,6 +6,13 @@ import cors from 'cors';
 
 const app = express();
 
+app.use((_req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', '*');
+
+  next();
+});
+
 // Middleware for parsing request body
 app.use(express.json());
 

@@ -25,10 +25,12 @@ router.post('/', async (request, response) => {
 
     const book = await Book.create(newBook);
 
+    if (!response.ok) response.status(500).send({ message: error.message });
+
+
     return response.status(201).send({ book, addAPICallCount: addAPICallCount++ });
   } catch (error) {
     console.log(error.message);
-    response.status(500).send({ message: error.message });
   }
 });
 
@@ -56,10 +58,12 @@ router.get('/:id', async (request, response) => {
 
     const book = await Book.findById(id);
 
+    if (!response.ok) response.status(500).send({ message: error.message });
+
+
     return response.status(200).json(book);
   } catch (error) {
     console.log(error.message);
-    response.status(500).send({ message: error.message });
   }
 });
 
@@ -85,10 +89,12 @@ router.put('/:id', async (request, response) => {
       return response.status(404).json({ message: 'Book not found' });
     }
 
+    if (!response.ok) response.status(500).send({ message: error.message });
+
+
     return response.status(200).send({ message: 'Book updated successfully', updateAPICallCount: updateAPICallCount++ });
   } catch (error) {
     console.log(error.message);
-    response.status(500).send({ message: error.message });
   }
 });
 
@@ -103,10 +109,12 @@ router.delete('/:id', async (request, response) => {
       return response.status(404).json({ message: 'Book not found' });
     }
 
+    if (!response.ok) response.status(500).send({ message: error.message });
+
+
     return response.status(200).send({ message: 'Book deleted successfully' });
   } catch (error) {
     console.log(error.message);
-    response.status(500).send({ message: error.message });
   }
 });
 
